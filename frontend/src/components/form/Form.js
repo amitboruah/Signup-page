@@ -8,6 +8,8 @@ export default function Form() {
 
   const [formErrors, setFromErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+  
+  //to validate email format
   const regex = /\S+@\S+\.\S+/;
   
   // ** store value in state
