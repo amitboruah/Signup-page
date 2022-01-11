@@ -8,6 +8,9 @@ export default function Form() {
 
   const [formErrors, setFromErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+  
+  //to validate email format
+  const regex = /\S+@\S+\.\S+/;
 
   // ** store value in state
   const [user, setUser] = useState({
@@ -62,7 +65,7 @@ export default function Form() {
       city &&
       state &&
       country &&
-      zip !== "" && password.length>=6
+      zip !== "" && password.length>=6 && regex.test(email) === true
     ) {
       await fetch("/api/form/", {
         headers: { "Content-Type": "application/json" },
@@ -132,7 +135,7 @@ export default function Form() {
 
   const validate = (value) => {
     const errors = {};
-    const regex = /\S+@\S+\.\S+/;
+    
 
     if (!value.firstName) {
       errors.firstName = "First name is required";
